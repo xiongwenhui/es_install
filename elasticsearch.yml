@@ -1,0 +1,47 @@
+#集群名
+cluster.name: UskyESCluster
+
+#节点名
+node.name:
+
+#设置绑定的ip地址，可以是ipv4或ipv6的，默认为0.0.0.0，
+#指绑定这台机器的任何一个ip
+network.bind_host: 0.0.0.0
+
+#设置其它节点和该节点交互的ip地址，如果不设置它会自动判断，
+#值必须是个真实的ip地址  
+network.publish_host:
+
+#设置对外服务的http端口，默认为9200
+http.port: 9200
+
+#设置节点之间交互的tcp端口，默认是9300
+transport.tcp.port: 9300
+
+#是否允许跨域REST请求
+http.cors.enabled: true
+
+#允许 REST 请求来自何处
+http.cors.allow-origin: "*"
+
+#节点角色设置
+node.master:
+node.data:
+
+#文件存储位置
+path.data: /usr/local/elasticsearch/data
+path.logs: /usr/local/elasticsearch/logs
+
+#有成为主节点资格的节点列表
+discovery.zen.ping.unicast.hosts: ["103.118.36.200:9300","103.118.36.201:9300","103.118.36.202:9300"]
+
+#集群中一直正常运行的，有成为master节点资格的最少节点数（默认为1）
+# (totalnumber of master-eligible nodes / 2 + 1) 
+discovery.zen.minimum_master_nodes: 2
+
+#默认true，即任何node都作为一个cross-cluster client去连接remote cluster，跨集群搜索的请求必须发给cross-cluster client
+search.remote.connect: true
+
+#设置remote node的属性，比如search.remote.node.attr:gateway这样设置，只有node.attr.gateway: true的node才会被该node连接用来做CCS查询
+search.remote.node.attr: gateway
+node.attr.gateway: true
