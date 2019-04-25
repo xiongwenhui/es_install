@@ -55,6 +55,12 @@ yum -y install unzip
 unzip -d $EsPath/plugins/ik/ elasticsearch-analysis-ik-6.6.1.zip
 rm -rf elasticsearch-analysis-ik-6.6.1.zip
 
+#安装repository-hdfs
+mkdir $EsPath/plugins/repository-hdfs
+cd $EsPath/plugins/repository-hdfs
+wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/repository-hdfs/repository-hdfs-6.6.1.zip
+unzip repository-hdfs-6.6.1.zip
+
 #启动es
 su - es <<EOF
 $EsPath/bin/elasticsearch -d;
