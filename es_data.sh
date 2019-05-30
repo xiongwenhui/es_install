@@ -18,6 +18,7 @@ chmod 777 $EsPath/logs
 echo "下载es成功"
 
 #建立用户
+chattr -i /etc/gshadow /etc/group /etc/shadow /etc/passwd
 useradd es
 chown -R es:es $EsPath
 
@@ -58,7 +59,7 @@ rm -rf elasticsearch-analysis-ik-6.6.1.zip
 #安装repository-hdfs
 mkdir $EsPath/plugins/repository-hdfs
 cd $EsPath/plugins/repository-hdfs
-wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/repository-hdfs/repository-hdfs-6.6.1.zip
+wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch-plugins/repository-hdfs/repository-hdfs-6.6.1.zip
 unzip repository-hdfs-6.6.1.zip
 
 #启动es
