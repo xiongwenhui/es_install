@@ -5,6 +5,16 @@ JvmSize=20G
 NodeMaster=false
 NodeData=true
 
+#安装jdk
+mkdir /usr/java
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz"
+tar -zxvf jdk-8u141-linux-x64.tar.gz
+mv jdk1.8.0_141/ /usr/java/jdk
+rm -rf jdk-8u141-linux-x64.tar.gz
+echo -e "JAVA_HOME=/usr/java/jdk\nCLASSPATH=\$JAVA_HOME/lib/\nPATH=\$PATH:\$JAVA_HOME/bin\nexport PATH JAVA_HOME CLASSPATH" >> /etc/profile
+source /etc/profile
+java -version
+
 #下载es
 wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.6.1.tar.gz
 tar -zxvf elasticsearch-6.6.1.tar.gz
