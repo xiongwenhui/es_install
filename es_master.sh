@@ -72,11 +72,13 @@ cd $EsPath/plugins/repository-hdfs
 wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch-plugins/repository-hdfs/repository-hdfs-6.6.1.zip
 unzip repository-hdfs-6.6.1.zip
 
+#开机启动
+mv /home/es /etc/init.d
+chmod +x es
+chkconfig --add es
+
 #启动es
-su - es <<EOF
-$EsPath/bin/elasticsearch -d;
-exit;
-EOF
-echo "启动中，请等待60s"
-sleep 60s
+service es start
+echo "启动中，请等待30s"
+sleep 30s
 curl localhost:9200
