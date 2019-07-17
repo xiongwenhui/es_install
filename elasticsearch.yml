@@ -45,3 +45,10 @@ search.remote.connect: true
 #设置remote node的属性，比如search.remote.node.attr:gateway这样设置，只有node.attr.gateway: true的node才会被该node连接用来做CCS查询
 search.remote.node.attr: gateway
 node.attr.gateway: true
+
+#xpack权限配置
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.verification_mode: certificate
+xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
+xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
