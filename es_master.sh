@@ -45,7 +45,6 @@ sysctl vm.max_map_count
 
 #修改权限文件
 mv -f /home/es_install-master/elastic-certificates.p12 $EsPath/config/elastic-certificates.p12
-mv -f /home/es_install-master/elasticsearch.keystore $EsPath/config/elasticsearch.keystore
 chmod 777 $EsPath/config/elastic-certificates.p12
 
 #修改es配置
