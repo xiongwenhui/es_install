@@ -6,19 +6,18 @@ NodeMaster=false
 NodeData=true
 
 #安装jdk
-mkdir /usr/java
-wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz"
-tar -zxvf jdk-8u141-linux-x64.tar.gz
-mv jdk1.8.0_141/ /usr/java/jdk
-rm -rf jdk-8u141-linux-x64.tar.gz
-echo -e "JAVA_HOME=/usr/java/jdk\nCLASSPATH=\$JAVA_HOME/lib/\nPATH=\$PATH:\$JAVA_HOME/bin\nexport PATH JAVA_HOME CLASSPATH" >> /etc/profile
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.rpm"
+yum install  jdk-8u141-linux-x64.rpm -y
+echo 'export JAVA_HOME=/usr/java/jdk1.8.0_141' >> /etc/profile
+echo 'export CLASSPATH=.:$CLASSPTAH:$JAVA_HOME/lib' >> /etc/profile
+echo 'export PATH=$PATH:$JAVA_HOME/bin' >> /etc/profile
 source /etc/profile
 java -version
 
 #下载es
-wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.6.1.tar.gz
-tar -zxvf elasticsearch-6.6.1.tar.gz
-mv elasticsearch-6.6.1 $EsPath
+wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.8.1.tar.gz
+tar -zxvf elasticsearch-6.8.1.tar.gz
+mv elasticsearch-6.8.1 $EsPath
 mkdir -p $EsPath/data
 mkdir -p $EsPath/logs
 mkdir -p $EsPath/plugins/ik
@@ -59,21 +58,22 @@ sed -i "s/-Xmx1g/-Xmx$JvmSize/g" $EsPath/config/jvm.options
 echo "修改配置成功"
 
 #配置中文分词
-wget --no-check-certificate https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.6.1/elasticsearch-analysis-ik-6.6.1.zip
-mv elasticsearch-analysis-ik-6.6.1.zip $EsPath/plugins/
+wget --no-check-certificate https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.8.1/elasticsearch-analysis-ik-6.8.1.zip
+mv elasticsearch-analysis-ik-6.8.1.zip $EsPath/plugins/
 cd $EsPath/plugins/
 yum -y install unzip
-unzip -d $EsPath/plugins/ik/ elasticsearch-analysis-ik-6.6.1.zip
-rm -rf elasticsearch-analysis-ik-6.6.1.zip
+unzip -d $EsPath/plugins/ik/ elasticsearch-analysis-ik-6.8.1.zip
+rm -rf elasticsearch-analysis-ik-6.8.1.zip
 
 #安装repository-hdfs
 mkdir $EsPath/plugins/repository-hdfs
 cd $EsPath/plugins/repository-hdfs
-wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch-plugins/repository-hdfs/repository-hdfs-6.6.1.zip
-unzip repository-hdfs-6.6.1.zip
+wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch-plugins/repository-hdfs/repository-hdfs-6.8.1.zip
+unzip repository-hdfs-6.8.1.zip
 
 #开机启动
 mv /home/es /etc/init.d
+cd /etc/init.d
 chmod +x es
 chkconfig --add es
 
