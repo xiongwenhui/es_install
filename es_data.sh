@@ -43,9 +43,13 @@ sysctl vm.max_map_count
 
 #echo "* soft nproc 4096" >> /etc/security/limits.d/20-nproc.conf
 
+#修改权限文件
+mv -f /home/es_install-master/elastic-certificates.p12 $EsPath/config/elastic-certificates.p12
+mv -f /home/es_install-master/elasticsearch.keystore $EsPath/config/elasticsearch.keystore
+chmod 777 $EsPath/config/elastic-certificates.p12
 
 #修改es配置
-mv -f /home/elasticsearch.yml $EsPath/config/elasticsearch.yml
+mv -f /home/es_install-master/elasticsearch.yml $EsPath/config/elasticsearch.yml
 ip=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v 172.17.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
 node=$NodeName-${ip##*.}
 sed -i "s/network.publish_host:/network.publish_host: $ip/g" $EsPath/config/elasticsearch.yml
@@ -72,7 +76,7 @@ wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch
 unzip repository-hdfs-6.8.1.zip
 
 #开机启动
-mv /home/es /etc/init.d
+mv /home/es_install-master/es /etc/init.d
 cd /etc/init.d
 chmod +x es
 chkconfig --add es
