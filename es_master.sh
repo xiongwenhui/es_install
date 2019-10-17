@@ -44,8 +44,8 @@ sysctl vm.max_map_count
 #echo "* soft nproc 4096" >> /etc/security/limits.d/20-nproc.conf
 
 #修改权限文件
-mv -f /home/es_install-master/elastic-certificates.p12 $EsPath/config/elastic-certificates.p12
-chmod 777 $EsPath/config/elastic-certificates.p12
+#mv -f /home/es_install-master/elastic-certificates.p12 $EsPath/config/elastic-certificates.p12
+#chmod 777 $EsPath/config/elastic-certificates.p12
 
 #修改es配置
 mv -f /home/es_install-master/elasticsearch.yml $EsPath/config/elasticsearch.yml
@@ -81,7 +81,7 @@ chmod +x es
 chkconfig --add es
 
 #启动es
-service es start
-echo "启动中，请等待30s"
-sleep 30s
-curl localhost:9200
+#service es start
+#echo "启动中，请等待30s"
+#sleep 30s
+#curl localhost:9200
