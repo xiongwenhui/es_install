@@ -46,6 +46,9 @@ search.remote.connect: true
 search.remote.node.attr: gateway
 node.attr.gateway: true
 
+#禁止物理内存和交换区之间交换内存
+bootstrap.memory_lock: true
+
 #xpack权限配置
 xpack.security.enabled: true
 xpack.security.transport.ssl.enabled: true
