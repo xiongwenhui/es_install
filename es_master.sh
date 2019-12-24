@@ -38,6 +38,8 @@ sysctl -p
 sysctl vm.swappiness
 sysctl vm.max_map_count
 
+echo -e "* soft memlock unlimited\n* hard memlock unlimited" >> /etc/security/limits.d/20-nproc.conf
+
 #echo -e "* soft nofile 65536\n* hard nofile 65536\n* soft nproc 4096\n* hard nproc 4096" >> /etc/security/limits.conf
 #ulimit -n
 
