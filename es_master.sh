@@ -1,7 +1,7 @@
 #!/bin/bash
 EsPath=/usr/local/elasticsearch
 NodeName=master
-JvmSize=20G
+JvmSize=15G
 NodeMaster=true
 NodeData=false
 
