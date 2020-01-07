@@ -33,7 +33,7 @@ path.data: /usr/local/elasticsearch/data
 path.logs: /usr/local/elasticsearch/logs
 
 #有成为主节点资格的节点列表
-discovery.zen.ping.unicast.hosts: ["103.118.36.202:9300","103.118.36.206:9300","103.118.36.216:9300"]
+discovery.zen.ping.unicast.hosts: ["103.134.148.189:9300","103.134.148.193:9300","103.134.148.197:9300"]
 
 #集群中一直正常运行的，有成为master节点资格的最少节点数（默认为1）
 # (totalnumber of master-eligible nodes / 2 + 1) 
