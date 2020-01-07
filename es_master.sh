@@ -15,8 +15,8 @@ source /etc/profile
 java -version
 
 #下载es
-wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.5.1.tar.gz
-tar -zxvf elasticsearch-7.5.1.tar.gz
+wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.5.1-linux-x86_64.tar.gz
+tar -zxvf elasticsearch-7.5.1-linux-x86_64.tar.gz
 mv elasticsearch-7.5.1 $EsPath
 mkdir -p $EsPath/data
 mkdir -p $EsPath/logs
