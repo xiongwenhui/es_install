@@ -33,10 +33,10 @@ path.data: /usr/local/elasticsearch/data
 path.logs: /usr/local/elasticsearch/logs
 
 #有成为主节点资格的节点列表
-discovery.seed_hosts: ["103.134.148.189:9300","103.134.148.193:9300","103.134.148.197:9300"]
+discovery.seed_hosts: ["103.118.36.202:9300","103.118.36.206:9300","103.118.36.216:9300"]
 
 #写入候选主节点的设备地址，来开启服务时就可以被选为主节点
-cluster.initial_master_nodes: ["103.134.148.189","103.134.148.193","103.134.148.197"]
+cluster.initial_master_nodes: ["103.118.36.202","103.118.36.206","103.118.36.216"]
 
 #默认true，即任何node都作为一个cross-cluster client去连接remote cluster，跨集群搜索的请求必须发给cross-cluster client
 search.remote.connect: true
