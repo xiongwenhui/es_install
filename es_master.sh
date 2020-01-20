@@ -6,13 +6,13 @@ NodeMaster=true
 NodeData=false
 
 #安装jdk
-wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.rpm"
-yum install  jdk-8u141-linux-x64.rpm -y
-echo 'export JAVA_HOME=/usr/java/jdk1.8.0_141' >> /etc/profile
-echo 'export CLASSPATH=.:$CLASSPTAH:$JAVA_HOME/lib' >> /etc/profile
-echo 'export PATH=$PATH:$JAVA_HOME/bin' >> /etc/profile
-source /etc/profile
-java -version
+#wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.rpm"
+#yum install  jdk-8u141-linux-x64.rpm -y
+#echo 'export JAVA_HOME=/usr/java/jdk1.8.0_141' >> /etc/profile
+#echo 'export CLASSPATH=.:$CLASSPTAH:$JAVA_HOME/lib' >> /etc/profile
+#echo 'export PATH=$PATH:$JAVA_HOME/bin' >> /etc/profile
+#source /etc/profile
+#java -version
 
 #下载es
 wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.5.1-linux-x86_64.tar.gz
@@ -27,18 +27,18 @@ chmod 777 $EsPath/logs
 echo "下载es成功"
 
 #建立用户
-chattr -i /etc/gshadow /etc/group /etc/shadow /etc/passwd
-useradd es
+#chattr -i /etc/gshadow /etc/group /etc/shadow /etc/passwd
+#useradd es
 chown -R es:es $EsPath
 
 #修改系统配置
-echo "vm.swappiness = 1" >> /etc/sysctl.conf
-echo "vm.max_map_count = 655360" >> /etc/sysctl.conf
-sysctl -p
-sysctl vm.swappiness
-sysctl vm.max_map_count
+#echo "vm.swappiness = 1" >> /etc/sysctl.conf
+#echo "vm.max_map_count = 655360" >> /etc/sysctl.conf
+#sysctl -p
+#sysctl vm.swappiness
+#sysctl vm.max_map_count
 
-echo -e "* soft memlock unlimited\n* hard memlock unlimited" >> /etc/security/limits.d/20-nproc.conf
+#echo -e "* soft memlock unlimited\n* hard memlock unlimited" >> /etc/security/limits.d/20-nproc.conf
 
 #echo -e "* soft nofile 65536\n* hard nofile 65536\n* soft nproc 4096\n* hard nproc 4096" >> /etc/security/limits.conf
 #ulimit -n
@@ -77,10 +77,10 @@ wget --no-check-certificate https://artifacts.elastic.co/downloads/elasticsearch
 unzip repository-hdfs-7.5.1.zip
 
 #开机启动
-mv /home/es_install-master/es /etc/init.d
-cd /etc/init.d
-chmod +x es
-chkconfig --add es
+#mv /home/es_install-master/es /etc/init.d
+#cd /etc/init.d
+#chmod +x es
+#chkconfig --add es
 
 #启动es
 #service es start
